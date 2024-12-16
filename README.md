@@ -27,7 +27,7 @@ Local Notes Tracker is a Node.js-based application designed to streamline note-t
 2. **Navigate to the project directory:**
 
    ```bash
-   cd local-notes-tracker
+   cd node-local-notes-tracker
    ```
 
 3. **Install dependencies:**
