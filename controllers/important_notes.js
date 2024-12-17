@@ -19,14 +19,25 @@ exports.getImportantNotesPage = async (req, res, next) => {
 
 exports.markAsImportant = async (req, res, next) => {
   try {
-    const noteId = req.body.noteId;
-    const updatedImportantNotes =
-      await ImportantNotesModel.markOrRemoveAsImportant(noteId, true);
-    res.render("important_notes/important_notes", {
-      importantNotes: updatedImportantNotes,
-      pageTitle: "All Important Notes | Local Notes Tracker",
-      path: "/important-notes",
-    });
+    const { noteId, fromView } = req.body;
+
+    await ImportantNotesModel.markOrRemoveAsImportant(noteId, true);
+
+    switch (fromView) {
+      case "NOTES_LISTING":
+        res.redirect("/notes");
+        break;
+      case "NOTE_DETAILS":
+        res.redirect(`/notes/${noteId}`);
+        break;
+      case "IMPORTANT_NOTES":
+        res.redirect("/important-notes");
+        break;
+
+      default:
+        res.redirect("/notes");
+        break;
+    }
   } catch (error) {
     console.error(
       "=====> Error: controllers -> important_notes.js -> markAsImportant() :: ",
@@ -37,14 +48,25 @@ exports.markAsImportant = async (req, res, next) => {
 
 exports.removeAsImportant = async (req, res, next) => {
   try {
-    const noteId = req.body.noteId;
-    const updatedImportantNotes =
-      await ImportantNotesModel.markOrRemoveAsImportant(noteId, false);
-    res.render("important_notes/important_notes", {
-      importantNotes: updatedImportantNotes,
-      pageTitle: "All Important Notes | Local Notes Tracker",
-      path: "/important-notes",
-    });
+    const { noteId, fromView } = req.body;
+
+    await ImportantNotesModel.markOrRemoveAsImportant(noteId, false);
+
+    switch (fromView) {
+      case "NOTES_LISTING":
+        res.redirect("/notes");
+        break;
+      case "NOTE_DETAILS":
+        res.redirect(`/notes/${noteId}`);
+        break;
+      case "IMPORTANT_NOTES":
+        res.redirect("/important-notes");
+        break;
+
+      default:
+        res.redirect("/notes");
+        break;
+    }
   } catch (error) {
     console.error(
       "=====> Error: controllers -> important_notes.js -> removeAsImportant() :: ",

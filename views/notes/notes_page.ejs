@@ -33,9 +33,11 @@
                         <button class="btn btn-danger theme-btn" type="submit">Delete</button>
                       </form>
                       <% if (note.isImportant===true) { %>
-                        <%- include('../shared/remove_as_important_note.ejs', { note: note }) %>
+                        <%- include('../shared/remove_as_important_note.ejs', { note: note, fromView: 'NOTES_LISTING' })
+                          %>
                           <% } else { %>
-                            <%- include('../shared/mark_as_important_note.ejs', { note: note }) %>
+                            <%- include('../shared/mark_as_important_note.ejs', { note: note, fromView: 'NOTES_LISTING'
+                              }) %>
                               <% } %>
                     </div>
                   </div>

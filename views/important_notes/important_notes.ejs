@@ -31,7 +31,7 @@
                     </div>
                     <div class="d-flex flex-wrap gap-3">
                       <a href="/notes/<%= impNote.id %>" class="btn btn-small">Details</a>
-                      <%- include('../shared/remove_as_important_note.ejs', { note: impNote }) %>
+                      <%- include('../shared/remove_as_important_note.ejs', { note: impNote, fromView: 'IMPORTANT_NOTES' }) %>
                     </div>
                   </div>
                 </div>

@@ -29,10 +29,11 @@
                                         </p>
                                         <br />
                                         <% if (note.isImportant===true) { %>
-                                            <%- include('../shared/remove_as_important_note.ejs', { note: note }) %>
+                                            <%- include('../shared/remove_as_important_note.ejs', { note: note,
+                                                fromView: 'NOTE_DETAILS' }) %>
                                                 <% } else { %>
-                                                    <%- include('../shared/mark_as_important_note.ejs', { note: note })
-                                                        %>
+                                                    <%- include('../shared/mark_as_important_note.ejs', { note: note,
+                                                        fromView: 'NOTE_DETAILS' }) %>
                                                         <% } %>
                                     </div>
                                 </div>
